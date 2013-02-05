@@ -32,7 +32,7 @@ hi iCursor guifg=White guibg=White
 set guicursor=n-v-c:block-Cursor-blinkon0
 set guicursor+=i-ci:ver25-iCursor-blinkwait1-blinkon600-blinkoff400
 
-set noantialias
+"set noantialias
 
 set ttyfast
 set ruler
