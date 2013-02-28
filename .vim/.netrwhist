@@ -1,5 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/Users/hannes/Work/dotfiles/.vim/bundle/command-t/ruby/command-t'
-let g:netrw_dirhist_2='/Users/hannes/Work/dotfiles'
-let g:netrw_dirhist_3='/Users/hannes/Work/repos/vs_web'

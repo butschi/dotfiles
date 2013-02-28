@@ -12,9 +12,9 @@ colorscheme slate2
 " END OF BUTSCHIS STUFF
 
 " From http://stevelosh.com/blog/2010/09/coming-home-to-vim/
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set expandtab
 
 set encoding=utf-8
@@ -90,12 +90,21 @@ nnoremap <leader>d :BD<CR>
 
 " Move lines around
 " Funny enough the <A-j> doesn't work but the output of that combination does
-nnoremap º :m+<CR>==
-nnoremap ∆ :m-2<CR>==
-inoremap º <Esc>:m+<CR>==gi
-inoremap ∆ <Esc>:m-2<CR>==gi
-vnoremap º :m'>+<CR>gv=gv
-vnoremap ∆ :m-2<CR>gv=gv
+" German keyboard layout
+"nnoremap º :m+<CR>==
+"nnoremap ∆ :m-2<CR>==
+"inoremap º <Esc>:m+<CR>==gi
+"inoremap ∆ <Esc>:m-2<CR>==gi
+"vnoremap º :m'>+<CR>gv=gv
+"vnoremap ∆ :m-2<CR>gv=gv
+
+" Swedish keyboard layout
+nnoremap √ :m+<CR>==
+nnoremap ª :m-2<CR>==
+inoremap √ <Esc>:m+<CR>==gi
+inoremap ª <Esc>:m-2<CR>==gi
+vnoremap √ :m'>+<CR>gv=gv
+vnoremap ª :m-2<CR>gv=gv
 
 au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 
