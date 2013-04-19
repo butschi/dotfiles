@@ -20,6 +20,8 @@ set expandtab
 set encoding=utf-8
 set fileencoding=utf-8
 set scrolloff=3
+" Typewriter scrollmode. Cursor stays in the middle of the window
+"set scrolloff=999
 set autoindent
 set showmode
 set showcmd
@@ -86,7 +88,10 @@ nnoremap <leader>d :BD<CR>
 
 " Escaping from Insert Mode
 :inoremap kj <Esc>
+" Escaping from Insert Mode and save
 :inoremap kw <Esc> :w<CR>
+" Jumping to end of line and keep editing
+:inoremap jk <Esc> A
 
 " Move lines around
 " Funny enough the <A-j> doesn't work but the output of that combination does
@@ -123,3 +128,4 @@ if executable('coffeetags')
         \ }
         \ }
 endif
+
