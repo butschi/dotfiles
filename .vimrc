@@ -60,9 +60,11 @@ nnoremap <tab> %
 vnoremap <tab> %
 
 set wrap
+set linebreak
 set textwidth=79
 set formatoptions=qrn1
 
+let NERDTreeIgnore=['\.pyc$', '\~$']
 
 " Mapping some convienience window movement commands
 nnoremap <leader>w <C-w>v<C-w>l
@@ -92,6 +94,8 @@ nnoremap <leader>d :BD<CR>
 :inoremap kw <Esc> :w<CR>
 " Jumping to end of line and keep editing
 :inoremap jk <Esc> A
+" Return within parenthesis
+:inoremap <C-CR> <CR><CR><Esc>ki<tab>
 
 " Move lines around
 " Funny enough the <A-j> doesn't work but the output of that combination does

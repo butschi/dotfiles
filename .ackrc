@@ -1,3 +1,6 @@
 --type-add=js=.coffee
 --type-add=css=.scss
+--ignore-dir=node_modules
+--ignore-dir=build
+
 
