@@ -1,3 +1,8 @@
 [user]
 	name = Hannes Schippmann
 	email = hannes@schippmann.tv
+[color]
+	ui = true
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f

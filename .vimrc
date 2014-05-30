@@ -6,10 +6,16 @@ set nocompatible  " We don't want vi compatibility.
 " BUTSCHIS STUFF (aka stuff I understand)
 
 if has("gui_running")
-set guioptions=aAce
+  colorscheme slate2
+  set guioptions=aAce
+  hi iCursor guifg=White guibg=White
+  set guicursor=n-v-c:block-Cursor-blinkon0
+  set guicursor+=i-ci:ver25-iCursor-blinkwait1-blinkon600-blinkoff400
+  set noballooneval
 endif
-colorscheme slate2
 " END OF BUTSCHIS STUFF
+
+set noantialias
 
 " From http://stevelosh.com/blog/2010/09/coming-home-to-vim/
 set tabstop=2
@@ -28,11 +34,6 @@ set wildmenu
 set wildmode=list:longest
 set visualbell
 set cursorline
-hi iCursor guifg=White guibg=White
-set guicursor=n-v-c:block-Cursor-blinkon0
-set guicursor+=i-ci:ver25-iCursor-blinkwait1-blinkon600-blinkoff400
-
-set noantialias
 
 set ttyfast
 set ruler
@@ -40,8 +41,6 @@ set backspace=indent,eol,start
 set laststatus=2
 set relativenumber
 set undofile
-
-set noballooneval
 
 let mapleader = ","
 
@@ -60,7 +59,6 @@ vnoremap <tab> %
 set wrap
 set textwidth=79
 set formatoptions=qrn1
-
 
 " Mapping some convienience window movement commands
 nnoremap <leader>w <C-w>v<C-w>l

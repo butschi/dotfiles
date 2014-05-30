@@ -1,3 +1,4 @@
 --type-add=js=.coffee
 --type-add=css=.scss
+--ignore-file=match:/.*\.log$/
 
