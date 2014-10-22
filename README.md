@@ -10,3 +10,10 @@ ln -s ~/Work/dotfiles/.vim .vim
 ln -s ~/Work/dotfiles/.vimrc .vimrc
 ```
 
+Added these bundles
+ctrlp.vim
+mustache
+vim-airline
+vim-bookmarks
+vim-fugitive
+vim-gitgutter

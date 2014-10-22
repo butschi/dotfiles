@@ -49,12 +49,8 @@ let mapleader = ","
 
 nnoremap / /\v
 vnoremap / /\v
-set ignorecase
-set smartcase
 set gdefault
-set incsearch
 set showmatch
-set hlsearch
 nnoremap <leader><space> :noh<cr>
 nnoremap <tab> %
 vnoremap <tab> %
@@ -115,7 +111,7 @@ inoremap ª <Esc>:m-2<CR>==gi
 vnoremap √ :m'>+<CR>gv=gv
 vnoremap ª :m-2<CR>gv=gv
 
-au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
+au BufNewFile,BufReadPost *.coffee setl shiftwidth=4 expandtab
 
 if executable('coffeetags')
   let g:tagbar_type_coffee = {
@@ -133,3 +129,28 @@ if executable('coffeetags')
         \ }
 endif
 
+let g:airline_powerline_fonts = 1
+set guifont=Meslo\ LG\ S\ for\ Powerline:h11
+set noshowmode
+
+" CtrlP
+nnoremap <leader>t :CtrlPMixed <CR>
+
+" GitGutter
+highlight link GitGutterAdd DiffAdd
+highlight link GitGutterChange DiffChange
+highlight link GitGutterDelete DiffDelete
+
+" From https://github.com/airblade/dotvim/blob/master/vimrc
+set ignorecase                    " Case-insensitive searching.
+set smartcase                     " But case-sensitive if expression contains a capital letter.
+
+set incsearch                     " Highlight matches as you type.
+set hlsearch                      " Highlight matches.
+
+set nobackup                      " No backups.
+set nowritebackup                 " No backups.
+set noswapfile                    " No swap files; more hassle than they're worth.
+
+set autoread                      " Automatically re-read files changed outside Vim.
+set updatetime=750                " Do things when I stop typing for three-quarters of a second.
