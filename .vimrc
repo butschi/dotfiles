@@ -88,12 +88,22 @@ nnoremap <leader>d :BD<CR>
 
 " Move lines around
 " Funny enough the <A-j> doesn't work but the output of that combination does
+"
+" German keyboard layout
 nnoremap º :m+<CR>==
 nnoremap ∆ :m-2<CR>==
 inoremap º <Esc>:m+<CR>==gi
 inoremap ∆ <Esc>:m-2<CR>==gi
 vnoremap º :m'>+<CR>gv=gv
 vnoremap ∆ :m-2<CR>gv=gv
+
+" Swedish keyboard layout
+"nnoremap √ :m+<CR>==
+"nnoremap ª :m-2<CR>==
+"inoremap √ <Esc>:m+<CR>==gi
+"inoremap ª <Esc>:m-2<CR>==gi
+"vnoremap √ :m'>+<CR>gv=gv
+"vnoremap ª :m-2<CR>gv=gv
 
 au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 
@@ -112,3 +122,5 @@ if executable('coffeetags')
         \ }
         \ }
 endif
+
+let NERDTreeIgnore=['\.pyc$']

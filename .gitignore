@@ -1,3 +1,6 @@
 .DS_Store
 *.un~
+*.un
 *.swp
+.*.swn
+.vim/.netrwhist
