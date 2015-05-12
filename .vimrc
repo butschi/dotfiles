@@ -60,7 +60,7 @@ set linebreak
 set textwidth=79
 set formatoptions=qrn1
 
-let NERDTreeIgnore=['\.pyc$', '\~$']
+let NERDTreeIgnore = ['\.pyc$', '\~$']
 
 " Mapping some convienience window movement commands
 nnoremap <leader>w <C-w>v<C-w>l
@@ -76,6 +76,10 @@ nnoremap <leader>a :Ack
 
 " Compile LaTeX and open in Preview
 nnoremap <leader>r :! rubber --pdf % ; find . -name *.pdf -exec open {} \;<cr><cr>
+
+" Insert ipdb python breakpoint
+nnoremap <leader>i oimport ipdb; ipdb.set_trace()<esc>==:w<cr>
+
 
 " Use the arrows to something usefull
 "nnoremap<right> :bn<cr>
