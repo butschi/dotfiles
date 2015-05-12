@@ -6,9 +6,17 @@ set nocompatible  " We don't want vi compatibility.
 " BUTSCHIS STUFF (aka stuff I understand)
 
 if has("gui_running")
-set guioptions=aAce
+    set guioptions=aAce
+    set guicursor=n-v-c:block-Cursor-blinkon0
+    set guicursor+=i-ci:ver25-iCursor-blinkwait1-blinkon600-blinkoff400
+    set noballooneval
+
+    let g:airline_powerline_fonts = 1
+    set guifont=Meslo\ LG\ S\ for\ Powerline:h11
+    
+    colorscheme slate2
 endif
-colorscheme slate2
+
 " END OF BUTSCHIS STUFF
 
 " From http://stevelosh.com/blog/2010/09/coming-home-to-vim/
@@ -31,8 +39,6 @@ set wildmode=list:longest
 set visualbell
 set cursorline
 hi iCursor guifg=White guibg=White
-set guicursor=n-v-c:block-Cursor-blinkon0
-set guicursor+=i-ci:ver25-iCursor-blinkwait1-blinkon600-blinkoff400
 
 "set noantialias
 
@@ -42,8 +48,6 @@ set backspace=indent,eol,start
 set laststatus=2
 set relativenumber
 set undofile
-
-set noballooneval
 
 let mapleader = ","
 
@@ -133,8 +137,6 @@ if executable('coffeetags')
         \ }
 endif
 
-let g:airline_powerline_fonts = 1
-set guifont=Meslo\ LG\ S\ for\ Powerline:h11
 set noshowmode
 
 " CtrlP
