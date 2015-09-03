@@ -3,3 +3,5 @@
 *.swp
 .vim/.netrwhist
 .vim/bundle/.vundle
+.vim/bundle/*
+!.vim/bundle/Vundle.vim/
