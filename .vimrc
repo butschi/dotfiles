@@ -1,22 +1,92 @@
-call pathogen#infect()
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+" Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+" Plugin 'L9'
+" Git plugin not hosted on GitHub
+" Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+" Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Avoid a name conflict with L9
+" Plugin 'user/L9', {'name': 'newL9'}
+"Plugin 'mileszs/ack.vim'
+"Plugin 'bufkill.vim'
+"Plugin 'docunext/closetag.vim'
+"Plugin 'kien/ctrlp.vim'
+"Plugin 'Raimondi/delimitMate.git'
+"Plugin 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
+"Plugin 'othree/html5.vim'
+"Plugin 'juvenn/mustache.vim'
+"Plugin 'elzr/vim-json'
+"Plugin 'scrooloose/nerdcommenter'
+"Plugin 'scrooloose/nerdtree'
+"Plugin 'nerdtree-ack'
+"Plugin 'scrooloose/syntastic'
+"Plugin 'kchmck/vim-coffee-script'
+"Plugin 'bling/vim-airline'
+"Plugin 'MattesGroeger/vim-bookmarks'
+"Plugin 'airblade/vim-gitgutter'
+"Plugin 'tpope/vim-fugitive'
+"Plugin 'tpope/vim-repeat'
+"Plugin 'tpope/vim-surround'
+"Plugin 'tpope/vim-speeddating'
+"Plugin 'groenewege/vim-less'
+"Plugin 'nvie/vim-flake8'
+"Plugin 'Lokaltog/vim-easymotion'
+"Plugin 'YankRing.vim'
+" Plugin 'svermeulen/vim-easyclip'
+" Plugin 'majutsushi/tagbar'
+" Plugin 'tpope/vim-haml'
+" Plugin 'tpope/vim-abolish'
+" Plugin 'tpope/vim-rails'
+" Plugin 'tpope/vim-markdown'
+
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
 syntax on
-filetype plugin indent on
-set nocompatible  " We don't want vi compatibility.
 
 " BUTSCHIS STUFF (aka stuff I understand)
-
 if has("gui_running")
     set guioptions=aAce
+    set guioptions-=T
     set guicursor=n-v-c:block-Cursor-blinkon0
     set guicursor+=i-ci:ver25-iCursor-blinkwait1-blinkon600-blinkoff400
     set noballooneval
 
-    let g:airline_powerline_fonts = 1
     set guifont=Meslo\ LG\ S\ for\ Powerline:h11
     
     colorscheme slate2
 endif
-
 " END OF BUTSCHIS STUFF
 
 " From http://stevelosh.com/blog/2010/09/coming-home-to-vim/
@@ -24,6 +94,7 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
+set smarttab
 
 set encoding=utf-8
 set fileencoding=utf-8
@@ -35,7 +106,10 @@ set showmode
 set showcmd
 set hidden
 set wildmenu
-set wildmode=list:longest
+"set wildmode=list:longest
+set wildmode=longest:list,full
+" Ignore compiled files
+set wildignore=*.o,*~,*.pyc
 set visualbell
 set cursorline
 hi iCursor guifg=White guibg=White
@@ -51,11 +125,63 @@ set undofile
 
 let mapleader = ","
 
+" Airline
+"let g:airline_theme = 'wombat'                       " Airline colorscheme
+let g:airline_powerline_fonts = 1                    " Fancy symbols
+let g:airline#extensions#tabline#enabled = 1         " Enable the list of buffers
+let g:airline#extensions#tabline#fnamemod = ':t'     " Show just the filename
+let g:airline#extensions#tabline#tab_nr_type = 1     " Show buffer #, not # of splits
+let g:airline#extensions#tabline#show_tab_nr = 1     " Show buffer # in tabline
+let g:airline#extensions#tabline#show_tab_type = 1   " Show the tab type
+let g:airline#extensions#tabline#buffer_idx_mode = 1 " Show buffer index
+
+" Leader mappings
+" Turn of search result highlighting
+nnoremap <leader><space> :noh<cr>
+
+" Compile LaTeX and open in Preview
+nnoremap <leader>r :! rubber --pdf % ; find . -name *.pdf -exec open {} \;<cr><cr>
+
+" Open a split window
+nnoremap <leader>w <C-w>v<C-w>l
+
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+nmap <leader>l <Plug>AirlineSelectNextTab
+nmap <leader>h <Plug>AirlineSelectPrevTab
+
+" Quickly edit/reload the vimrc file
+nnoremap <silent> <leader>ev :e $MYVIMRC<CR>
+nnoremap <silent> <leader>sv :so $MYVIMRC<CR>
+
+" Insert ipdb python breakpoint
+nnoremap <leader>i oimport ipdb; ipdb.set_trace()<esc>==:w<cr>
+
+" Use this to kill buffer leaving windows intact
+nnoremap <leader>bd :BD<CR>
+nnoremap <leader>f :b#<CR>
+
+" CtrlP
+nnoremap <leader>t :CtrlPMixed <CR>
+
+" Ack
+nnoremap <leader>a :Ack 
+
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+
 nnoremap / /\v
 vnoremap / /\v
-set gdefault
+set gdefault " Always use /g flag on :s substitutions
 set showmatch
-nnoremap <leader><space> :noh<cr>
 nnoremap <tab> %
 vnoremap <tab> %
 
@@ -67,31 +193,21 @@ set formatoptions=qrn1
 let NERDTreeIgnore = ['\.pyc$', '\~$']
 
 " Mapping some convienience window movement commands
-nnoremap <leader>w <C-w>v<C-w>l
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-nnoremap <leader>a :Ack 
 
 "Automatically source vimrc on changes
 :au! BufWritePost $MYVIMRC source $MYVIMRC
-
-" Compile LaTeX and open in Preview
-nnoremap <leader>r :! rubber --pdf % ; find . -name *.pdf -exec open {} \;<cr><cr>
-
-" Insert ipdb python breakpoint
-nnoremap <leader>i oimport ipdb; ipdb.set_trace()<esc>==:w<cr>
-
 
 " Use the arrows to something usefull
 "nnoremap<right> :bn<cr>
 "nnoremap<left> :bp<cr>
 
-" Use this to kill buffer leaving windows intact
-nnoremap <leader>d :BD<CR>
-
+" Butschis mappings
+" -----------------
 " Escaping from Insert Mode
 :inoremap kj <Esc>
 " Escaping from Insert Mode and save
@@ -100,6 +216,10 @@ nnoremap <leader>d :BD<CR>
 :inoremap jk <Esc> A
 " Return within parenthesis
 :inoremap <C-CR> <CR><CR><Esc>ki<tab>
+" Insert newline without entering insert mode
+:nnoremap <CR> mao<Esc>`a
+:nnoremap <S-CR> maO<Esc>`a
+
 
 " Move lines around
 " Funny enough the <A-j> doesn't work but the output of that combination does
@@ -139,9 +259,6 @@ endif
 
 set noshowmode
 
-" CtrlP
-nnoremap <leader>t :CtrlPMixed <CR>
-
 " GitGutter
 highlight link GitGutterAdd DiffAdd
 highlight link GitGutterChange DiffChange
@@ -153,6 +270,8 @@ set smartcase                     " But case-sensitive if expression contains a 
 
 set incsearch                     " Highlight matches as you type.
 set hlsearch                      " Highlight matches.
+"autocmd InsertEnter * :setlocal nohlsearch " Turn off search highlighting for insert mode
+"autocmd InsertLeave * :setlocal hlsearch   " Turn it back on
 
 set nobackup                      " No backups.
 set nowritebackup                 " No backups.
@@ -160,3 +279,29 @@ set noswapfile                    " No swap files; more hassle than they're wort
 
 set autoread                      " Automatically re-read files changed outside Vim.
 set updatetime=750                " Do things when I stop typing for three-quarters of a second.
+
+
+" EasyMotion
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+let g:EasyMotion_keys = 'asdfghjklöqwertyuiopzxcvbnm,.' " Use nicer keys
+
+" Bi-directional find motion
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+ "`s{char}{label}`
+"nmap s <Plug>(easymotion-s)
+" or
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+nmap s <Plug>(easymotion-s2)
+vmap s <Plug>(easymotion-s2)
+
+" Turn on case insensitive feature
+let g:EasyMotion_smartcase = 1
+
+" Yank from the cursor to the end of the line, to be consistent with C and D.
+nmap Y y$
+
+" Visual shifting (does not exit Visual mode)
+vnoremap < <gv
+vnoremap > >gv 
+
