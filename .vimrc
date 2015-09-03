@@ -178,6 +178,10 @@ nnoremap <leader>a :Ack
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 
+" Install YAJL first
+" brew install yajl
+au FileType json setlocal equalprg=json_reformat
+
 nnoremap / /\v
 vnoremap / /\v
 set gdefault " Always use /g flag on :s substitutions
