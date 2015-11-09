@@ -1,3 +1,4 @@
+set shell=bash\ -i            " Set vims shell to be bash for compatibility with plugins like vim-instant-markdown
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -25,7 +26,8 @@ Plugin 'VundleVim/Vundle.vim'
 " Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Avoid a name conflict with L9
 " Plugin 'user/L9', {'name': 'newL9'}
-Plugin 'mileszs/ack.vim'
+"Plugin 'mileszs/ack.vim'
+Plugin 'rking/ag.vim'
 Plugin 'bufkill.vim'
 Plugin 'docunext/closetag.vim'
 Plugin 'kien/ctrlp.vim'
@@ -51,6 +53,8 @@ Plugin 'nvie/vim-flake8'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'YankRing.vim'
 Plugin 'godlygeek/tabular'
+Plugin 'wakatime/vim-wakatime'
+" Plugin 'JamshedVesuna/vim-markdown-preview'
 " Plugin 'svermeulen/vim-easyclip'
 " Plugin 'majutsushi/tagbar'
 " Plugin 'tpope/vim-haml'
@@ -169,11 +173,14 @@ nnoremap <leader>i oimport ipdb; ipdb.set_trace()<esc>==:w<cr>
 nnoremap <leader>bd :BD<CR>
 nnoremap <leader>f :b#<CR>
 
-" CtrlP
+" Ctrl
 nnoremap <leader>t :CtrlPMixed <CR>
 
 " Ack
-nnoremap <leader>a :Ack 
+"nnoremap <leader>a :Ack 
+
+" Ag
+nnoremap <leader>a :Ag 
 
 " JK motions: Line motions
 map <Leader>j <Plug>(easymotion-j)
@@ -203,9 +210,24 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" Yank from the cursor to the end of the line, to be consistent with C and D.
+nnoremap Y y$
+
+" Make delete single characters not insert into default register
+nnoremap x "_x
+
+
+" Delete without putting it into default register
+nnoremap <leader>d "_d
+nnoremap <leader>D "_D
+vnoremap <leader>d "_d
+
+" Visual shifting (does not exit Visual mode)
+vnoremap < <gv
+vnoremap > >gv 
 
 "Automatically source vimrc on changes
-:au! BufWritePost $MYVIMRC source $MYVIMRC
+":au! BufWritePost $MYVIMRC source $MYVIMRC
 
 " Use the arrows to something usefull
 "nnoremap<right> :bn<cr>
@@ -302,11 +324,3 @@ vmap s <Plug>(easymotion-s2)
 
 " Turn on case insensitive feature
 let g:EasyMotion_smartcase = 1
-
-" Yank from the cursor to the end of the line, to be consistent with C and D.
-nmap Y y$
-
-" Visual shifting (does not exit Visual mode)
-vnoremap < <gv
-vnoremap > >gv 
-
