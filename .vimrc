@@ -181,10 +181,15 @@ nnoremap <leader>t :CtrlPMixed <CR>
 
 " Ag
 nnoremap <leader>a :Ag 
+" let g:agprg="ag --vimgrep -U"
+let g:ag_working_path_mode="r"
 
 " JK motions: Line motions
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
+
+" Format JSON
+nnoremap <leader>fj :%!python -m json.tool <CR>
 
 " Install YAJL first
 " brew install yajl
