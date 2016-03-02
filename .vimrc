@@ -53,9 +53,9 @@ Plugin 'nvie/vim-flake8'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'YankRing.vim'
 Plugin 'godlygeek/tabular'
+Plugin 'mxw/vim-jsx'
 " Plugin 'wakatime/vim-wakatime'
 " Plugin 'JamshedVesuna/vim-markdown-preview'
-Plugin 'mxw/vim-jsx'
 " Plugin 'svermeulen/vim-easyclip'
 " Plugin 'majutsushi/tagbar'
 " Plugin 'tpope/vim-haml'
@@ -208,6 +208,7 @@ set wrap
 set linebreak
 set textwidth=79
 set formatoptions=qrn1
+set nojoinspaces                      " J command doesn't add extra space
 
 let NERDTreeIgnore = ['\.pyc$', '\~$']
 
