@@ -1,3 +1,11 @@
 [user]
 	name = Hannes Schippmann
 	email = hannes@schippmann.tv
+[color]
+	ui = true
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[core]
+	excludesfile = /Users/hannes/.gitignore

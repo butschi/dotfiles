@@ -53,8 +53,9 @@ Plugin 'nvie/vim-flake8'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'YankRing.vim'
 Plugin 'godlygeek/tabular'
-Plugin 'wakatime/vim-wakatime'
+" Plugin 'wakatime/vim-wakatime'
 " Plugin 'JamshedVesuna/vim-markdown-preview'
+Plugin 'mxw/vim-jsx'
 " Plugin 'svermeulen/vim-easyclip'
 " Plugin 'majutsushi/tagbar'
 " Plugin 'tpope/vim-haml'
@@ -77,6 +78,7 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+let g:syntastic_javascript_checkers = ['eslint']
 
 syntax on
 
@@ -252,24 +254,27 @@ vnoremap > >gv
 :nnoremap <CR> mao<Esc>`a
 :nnoremap <S-CR> maO<Esc>`a
 
+" Switch to previous buffer
+:nnoremap <Tab> <C-^>
+
 
 " Move lines around
 " Funny enough the <A-j> doesn't work but the output of that combination does
 " German keyboard layout
-"nnoremap º :m+<CR>==
-"nnoremap ∆ :m-2<CR>==
-"inoremap º <Esc>:m+<CR>==gi
-"inoremap ∆ <Esc>:m-2<CR>==gi
-"vnoremap º :m'>+<CR>gv=gv
-"vnoremap ∆ :m-2<CR>gv=gv
+nnoremap º :m+<CR>==
+nnoremap ∆ :m-2<CR>==
+inoremap º <Esc>:m+<CR>==gi
+inoremap ∆ <Esc>:m-2<CR>==gi
+vnoremap º :m'>+<CR>gv=gv
+vnoremap ∆ :m-2<CR>gv=gv
 
 " Swedish keyboard layout
-nnoremap √ :m+<CR>==
-nnoremap ª :m-2<CR>==
-inoremap √ <Esc>:m+<CR>==gi
-inoremap ª <Esc>:m-2<CR>==gi
-vnoremap √ :m'>+<CR>gv=gv
-vnoremap ª :m-2<CR>gv=gv
+"nnoremap √ :m+<CR>==
+"nnoremap ª :m-2<CR>==
+"inoremap √ <Esc>:m+<CR>==gi
+"inoremap ª <Esc>:m-2<CR>==gi
+"vnoremap √ :m'>+<CR>gv=gv
+"vnoremap ª :m-2<CR>gv=gv
 
 au BufNewFile,BufReadPost *.coffee setl shiftwidth=4 expandtab
 
