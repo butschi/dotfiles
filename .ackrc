@@ -1,4 +1,7 @@
 --type-add=js=.coffee
 --type-add=css=.scss
+--type-add=js=.jsx
+--ignore-dir=node_modules
+--ignore-dir=build
 --ignore-file=match:/.*\.log$/
 
