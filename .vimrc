@@ -97,9 +97,9 @@ endif
 " END OF BUTSCHIS STUFF
 
 " From http://stevelosh.com/blog/2010/09/coming-home-to-vim/
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set expandtab
 set smarttab
 
