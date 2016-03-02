@@ -96,6 +96,8 @@ if has("gui_running")
 endif
 " END OF BUTSCHIS STUFF
 
+set noantialias
+
 " From http://stevelosh.com/blog/2010/09/coming-home-to-vim/
 set tabstop=2
 set shiftwidth=2
@@ -121,7 +123,7 @@ set visualbell
 set cursorline
 hi iCursor guifg=White guibg=White
 
-"set noantialias
+set noantialias
 
 set ttyfast
 set ruler
@@ -277,7 +279,7 @@ vnoremap ∆ :m-2<CR>gv=gv
 "vnoremap √ :m'>+<CR>gv=gv
 "vnoremap ª :m-2<CR>gv=gv
 
-au BufNewFile,BufReadPost *.coffee setl shiftwidth=4 expandtab
+au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 
 if executable('coffeetags')
   let g:tagbar_type_coffee = {
