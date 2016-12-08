@@ -54,6 +54,8 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'YankRing.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'mxw/vim-jsx'
+Plugin 'joonty/vdebug'
+Plugin 'editorconfig/editorconfig-vim'
 " Plugin 'wakatime/vim-wakatime'
 " Plugin 'JamshedVesuna/vim-markdown-preview'
 " Plugin 'svermeulen/vim-easyclip'
@@ -79,6 +81,8 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_php_checkers=['php', 'phpcs']
+let g:syntastic_php_phpcs_args='--standard=PSR2 -n'
 
 syntax on
 
@@ -193,7 +197,7 @@ map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 
 " Format JSON
-nnoremap <leader>fj :%!python -m json.tool <CR>
+" nnoremap <leader>fj :%!python -m json.tool <CR>
 
 " Install YAJL first
 " brew install yajl
@@ -213,6 +217,8 @@ set formatoptions=qrn1
 set nojoinspaces                      " J command doesn't add extra space
 
 let NERDTreeIgnore = ['\.pyc$', '\~$']
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
 
 " Mapping some convienience window movement commands
 nnoremap <C-h> <C-w>h
@@ -260,16 +266,23 @@ vnoremap > >gv
 " Switch to previous buffer
 :nnoremap <Tab> <C-^>
 
-
 " Move lines around
 " Funny enough the <A-j> doesn't work but the output of that combination does
+" US keyboard layout
+nnoremap ∆ :m+<CR>==
+nnoremap ˚ :m-2<CR>==
+inoremap ∆ <Esc>:m+<CR>==gi
+inoremap ˚ <Esc>:m-2<CR>==gi
+vnoremap ∆ :m'>+<CR>gv=gv
+vnoremap ˚ :m-2<CR>gv=gv
+
 " German keyboard layout
-nnoremap º :m+<CR>==
-nnoremap ∆ :m-2<CR>==
-inoremap º <Esc>:m+<CR>==gi
-inoremap ∆ <Esc>:m-2<CR>==gi
-vnoremap º :m'>+<CR>gv=gv
-vnoremap ∆ :m-2<CR>gv=gv
+"nnoremap º :m+<CR>==
+"nnoremap ∆ :m-2<CR>==
+"inoremap º <Esc>:m+<CR>==gi
+"inoremap ∆ <Esc>:m-2<CR>==gi
+"vnoremap º :m'>+<CR>gv=gv
+"vnoremap ∆ :m-2<CR>gv=gv
 
 " Swedish keyboard layout
 "nnoremap √ :m+<CR>==
@@ -320,10 +333,9 @@ set noswapfile                    " No swap files; more hassle than they're wort
 set autoread                      " Automatically re-read files changed outside Vim.
 set updatetime=750                " Do things when I stop typing for three-quarters of a second.
 
-
 " EasyMotion
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
-let g:EasyMotion_keys = 'asdfghjklöqwertyuiopzxcvbnm,.' " Use nicer keys
+let g:EasyMotion_keys = 'asdfghjklqwertyuiopzxcvbnm' " Use nicer keys
 
 " Bi-directional find motion
 " Jump to anywhere you want with minimal keystrokes, with just one key binding.
@@ -337,3 +349,10 @@ vmap s <Plug>(easymotion-s2)
 
 " Turn on case insensitive feature
 let g:EasyMotion_smartcase = 1
+
+" VDebug
+let g:vdebug_options={}
+let g:vdebug_options['path_maps']={"/api": "/Users/hannes/Work/frilansfinans/frilansfinans_api_lumen"}
+let g:vdebug_options["break_on_open"]=0
+
+nnoremap <leader>bb :Breakpoint<CR>
