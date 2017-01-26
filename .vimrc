@@ -352,7 +352,7 @@ let g:EasyMotion_smartcase = 1
 
 " VDebug
 let g:vdebug_options={}
-let g:vdebug_options['path_maps']={"/api": "/Users/hannes/Work/frilansfinans/frilansfinans_api_lumen"}
+let g:vdebug_options['path_maps']={"/api": "/Users/butschi/Work/frilansfinans/rest-api"}
 let g:vdebug_options["break_on_open"]=0
 
 nnoremap <leader>bb :Breakpoint<CR>
